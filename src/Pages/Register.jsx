@@ -1,9 +1,9 @@
-import { Button, Input, ListBox, Select } from '@heroui/react'
+import { Button, FieldError, Input, ListBox, Select, TextField } from '@heroui/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
 export default function Register() {
-    let { handleSubmit, register } = useForm({
+    let { handleSubmit, register, formState: { errors } } = useForm({
         defaultValues: {
             name: '',
             email: '',
@@ -23,12 +23,16 @@ export default function Register() {
             <div className='bg-[#90CAF9] rounded-2xl shadow-2xl py-10 px-6 min-w-md'>
                 <h2 className='text-center mb-4 font-medium text-3xl'>Register Now!</h2>
                 <form onSubmit={handleSubmit(sendData)} className='flex flex-col gap-4'>
-                    <Input aria-label="Name" type='text' placeholder="Name" {...register('name')} />
+                    <TextField aria-label="TextBox" isInvalid={Boolean(errors.name)}>
+                        <Input aria-label="Name" type='text' placeholder="Name" {...register('name', { required: 'Name is Required', minLength: { value: 3, message: 'name must be at least 3 letters' } })} />
+                        <FieldError>{errors.name?.message}</FieldError>
+                    </TextField>
                     <Input aria-label="Email" type='email' placeholder="Email" {...register('email')} />
                     <Input aria-label="Password" type='password' placeholder="Password" {...register('password')} />
                     <Input aria-label="RePassword" type='password' placeholder="Re-Password" {...register('rePassword')} />
                     <div className='flex justify-between gap-3'>
                         <Input aria-label="DateOfBirth" type='date' className='w-[50%]' placeholder="Birth Date" {...register('dateOfBirth')} />
+                        {/* Should handle "select gender" UI later... */}
                         <select {...register('gender')}>
                             <option value="male">Male</option>
                             <option value="female">female</option>
