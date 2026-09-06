@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
+import { signUp } from '../Services/AuthServices'
 
 
 const schema = zod.object({
@@ -30,8 +31,9 @@ export default function Register() {
         reValidateMode: 'onBlur'
     })
 
-    function sendData(userData) {
-        console.log(userData);
+    async function sendData(userData) {
+        const response = await signUp(userData)
+        console.log(response);
     }
 
 
@@ -65,7 +67,7 @@ export default function Register() {
                             <select {...register('gender')} className='w-full outline-[#0485F6] focus:outline-2 bg-white rounded-xl py-2 px-3 text-[0.85rem] flex justify-center hover:bg-gray-200 focus:bg-white duration-500'>
                                 <option value="" disabled hidden>Gender</option>
                                 <option value="male">Male</option>
-                                <option value="female">female</option>
+                                <option value="female">Female</option>
                             </select>
                             <FieldError>{errors.gender?.message}</FieldError>
                         </TextField>
