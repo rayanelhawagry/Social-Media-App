@@ -1,6 +1,6 @@
-import { Button, FieldError, Input, TextField } from '@heroui/react'
+import { Button, FieldError, Input, Spinner, TextField } from '@heroui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { signUp } from '../Services/AuthServices'
@@ -17,6 +17,9 @@ const schema = zod.object({
 
 
 export default function Register() {
+    const [loading, setLoading] = useState(false)
+    const [apiError, setApiError] = useState(null)
+
     let { handleSubmit, register, formState: { errors } } = useForm({
         defaultValues: {
             name: '',
@@ -32,7 +35,9 @@ export default function Register() {
     })
 
     async function sendData(userData) {
+        setLoading(true)
         const response = await signUp(userData)
+        setLoading(false)
         console.log(response);
     }
 
@@ -72,7 +77,16 @@ export default function Register() {
                             <FieldError>{errors.gender?.message}</FieldError>
                         </TextField>
                     </div>
-                    <Button type='submit' variant="tertiary" className='w-full'>Register</Button>
+                    <Button type='submit' variant="tertiary" className='w-full' isDisabled={loading}>
+                        {loading ? (
+                            <>
+                                <Spinner size="sm" color="current" />
+                                <span>Loading...</span>
+                            </>
+                        ) : (
+                            "Register"
+                        )}
+                    </Button>
                 </form>
             </div>
         </>
