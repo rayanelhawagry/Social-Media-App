@@ -38,7 +38,13 @@ export default function Register() {
         setLoading(true)
         const response = await signUp(userData)
         setLoading(false)
-        console.log(response);
+
+        if (response.success === true) {
+            console.log(response);
+        } else {
+            console.log(response);
+            setApiError(response.errors)
+        }
     }
 
 
@@ -87,6 +93,7 @@ export default function Register() {
                             "Register"
                         )}
                     </Button>
+                    {apiError && <span className='text-center text-red-500'>{apiError}</span>}
                 </form>
             </div>
         </>
