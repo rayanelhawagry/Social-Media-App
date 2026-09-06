@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { signUp } from '../Services/AuthServices'
+import { useNavigate } from 'react-router-dom'
 
 
 const schema = zod.object({
@@ -19,6 +20,7 @@ const schema = zod.object({
 export default function Register() {
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState(null)
+    const navigate = useNavigate()
 
     let { handleSubmit, register, formState: { errors } } = useForm({
         defaultValues: {
@@ -40,9 +42,8 @@ export default function Register() {
         setLoading(false)
 
         if (response.success === true) {
-            console.log(response);
+            navigate('/Login')
         } else {
-            console.log(response);
             setApiError(response.errors)
         }
     }
