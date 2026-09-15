@@ -2,20 +2,9 @@ import { Button, FieldError, Input, Spinner, TextField } from '@heroui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import * as zod from 'zod'
 import { signUp } from '../Services/AuthServices'
-import { useNavigate } from 'react-router-dom'
-
-
-const schema = zod.object({
-    name: zod.string().nonempty('Name is Required').min(3, 'Name must be at least 3 letters').max(20, 'Name must be less than 20'),
-    email: zod.string().nonempty('Email is Required').regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid Email'),
-    password: zod.string().nonempty('Password is Required').regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, 'Invalid Password'),
-    rePassword: zod.string().nonempty('Re-Password is Required'),
-    dateOfBirth: zod.coerce.date('Date is Required'),
-    gender: zod.string().nonempty('Gender is Required')
-}).refine((data) => data.password === data.rePassword, { path: ['rePassword'], message: `Passwords don't match` })
-
+import { Link, useNavigate } from 'react-router-dom'
+import { schema } from '../Schema/RegisterSchema'
 
 export default function Register() {
     const [loading, setLoading] = useState(false)
@@ -94,6 +83,7 @@ export default function Register() {
                             "Register"
                         )}
                     </Button>
+                    <div className='font-medium'>Already have an account? Please, <Link className='text-blue-700' to={'/login'}>login</Link></div>
                     {apiError && <span className='text-center text-red-500'>{apiError}</span>}
                 </form>
             </div>
