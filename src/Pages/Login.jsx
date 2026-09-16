@@ -26,8 +26,14 @@ export default function Login() {
         navigate('/')
         setLoading(false)
 
-        // if (response.sucess == true)
-        //     navigate('/')
+        // setLoading(true)
+        // const response = await signIn(userData)
+        // setLoading(false)
+
+        // if (response.success === true) {
+        //     localStorage.setItem('token', response.token)
+        //     navigate('/login')
+        // }
         // else
         //     setApiError(response.errors)
     }
