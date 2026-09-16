@@ -30,11 +30,10 @@ export default function Register() {
         const response = await signUp(userData)
         setLoading(false)
 
-        if (response.success === true) {
-            navigate('/Login')
-        } else {
+        if (response.success === true)
+            navigate('/login')
+        else
             setApiError(response.errors)
-        }
     }
 
 
