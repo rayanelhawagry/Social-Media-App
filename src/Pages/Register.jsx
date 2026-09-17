@@ -59,11 +59,11 @@ export default function Register() {
                         <FieldError>{errors.rePassword?.message}</FieldError>
                     </TextField>
                     <div className='flex justify-between gap-3'>
-                        <TextField className='w-[50%]' aria-label="TextBox" isInvalid={Boolean(errors.dateOfBirth)}>
+                        <TextField className='w-[50%]' aria-label="DateOfBirthTextBox" isInvalid={Boolean(errors.dateOfBirth)}>
                             <Input className='w-full' aria-label="DateOfBirth" type='date' placeholder="Birth Date" {...register('dateOfBirth')} />
                             <FieldError>{errors.dateOfBirth?.message}</FieldError>
                         </TextField>
-                        <TextField className='w-[50%] ' aria-label="TextBox" isInvalid={Boolean(errors.gender)}>
+                        <TextField className='w-[50%] ' aria-label="GenderTextBox" isInvalid={Boolean(errors.gender)}>
                             <select {...register('gender')} className='w-full outline-[#0485F6] focus:outline-2 bg-white rounded-xl py-2 px-3 text-[0.85rem] flex justify-center hover:bg-gray-200 focus:bg-white duration-500'>
                                 <option value="" disabled hidden>Gender</option>
                                 <option value="male">Male</option>
