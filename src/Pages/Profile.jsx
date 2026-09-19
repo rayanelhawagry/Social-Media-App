@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CounterContext } from '../Context/CounterContext'
 
 export default function Profile() {
+    let { counter, setCounter } = useContext(CounterContext)
+
+
     return (
-        <div>Profile</div>
+        <>
+            <h1 className='text-6xl'>{counter}</h1>
+        </>
     )
 }

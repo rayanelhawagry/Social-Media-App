@@ -7,7 +7,9 @@ export default function MainLayout() {
     return (
         <>
             <Navbar />
-            <Outlet />
+            <div className='h-screen flex justify-center items-center'>
+                <Outlet />
+            </div>
             <Footer />
         </>
     )
