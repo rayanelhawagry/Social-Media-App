@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 
 export default function AuthProtectedRoute({ children }) {
-    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') != true)
+    const { isLoggedIn } = useContext(AuthContext)
+    // const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') != true)
 
-    return isLoggedIn ? children : <Navigate to={'/'} />
+    // return isLoggedIn ? children : <Navigate to={'/'} />
 }

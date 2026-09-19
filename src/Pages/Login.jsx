@@ -1,14 +1,16 @@
 import { Button, FieldError, Input, Spinner, TextField } from '@heroui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signIn } from '../Services/AuthServices'
 import { Link, useNavigate } from 'react-router-dom'
 import { schema } from '../Schema/LoginSchema'
+import { AuthContext } from '../Context/AuthContext'
 
 export default function Login() {
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState(null)
+    const { setIsLoggedIn } = useContext(AuthContext)
     const navigate = useNavigate()
 
     let { handleSubmit, register, formState: { errors } } = useForm({
@@ -32,6 +34,7 @@ export default function Login() {
 
         // if (response.success === true) {
         //     localStorage.setItem('token', response.token)
+        //     setIsLoggedIn(response.token)
         //     navigate('/login')
         // }
         // else

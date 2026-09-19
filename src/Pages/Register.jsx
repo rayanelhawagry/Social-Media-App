@@ -27,13 +27,18 @@ export default function Register() {
 
     async function sendData(userData) {
         setLoading(true)
-        const response = await signUp(userData)
+        navigate('/login')
         setLoading(false)
 
-        if (response.success === true)
-            navigate('/login')
-        else
-            setApiError(response.errors)
+
+        // setLoading(true)
+        // const response = await signUp(userData)
+        // setLoading(false)
+
+        // if (response.success === true)
+        //     navigate('/login')
+        // else
+        //     setApiError(response.errors)
     }
 
 
