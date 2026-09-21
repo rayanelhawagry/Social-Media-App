@@ -5,12 +5,10 @@ import { useForm } from 'react-hook-form'
 import { signIn } from '../Services/AuthServices'
 import { Link, useNavigate } from 'react-router-dom'
 import { schema } from '../Schema/LoginSchema'
-import { AuthContext } from '../Context/AuthContext'
 
 export default function Login() {
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState(null)
-    const { setIsLoggedIn } = useContext(AuthContext)
     const navigate = useNavigate()
 
     let { handleSubmit, register, formState: { errors } } = useForm({

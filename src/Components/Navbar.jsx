@@ -1,13 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { CounterContext } from '../Context/CounterContext'
-import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar() {
-    const { setIsLoggedIn } = useState(AuthContext)
-    // const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') != null)
     const navigate = useNavigate()
-    let { counter } = useContext(CounterContext)
 
     function logOut() {
         localStorage.removeItem('token')
@@ -20,7 +15,7 @@ export default function Navbar() {
         <>
             <nav className="bg-neutral-primary fixed w-full z-20 top-0 inset-s-0 border-b border-default">
                 <div className="max-w-5xl flex items-center justify-between mx-auto p-4">
-                    <Link className="text-xl text-heading font-semibold">FakeIntimacy, {counter}</Link>
+                    <Link className="text-xl text-heading font-semibold" to={'/'}>FakeIntimacy</Link>
                     <div className="flex gap-6">
                         <NavLink className="py-2 font-medium" to={'/login'}>Sign In</NavLink>
                         <NavLink className="py-2 font-medium" to={'/register'}>Sign Up</NavLink>
