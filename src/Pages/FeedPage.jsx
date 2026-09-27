@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PostCard from '../Components/PostCard'
 import { getAllPostsAPI } from '../Services/PostServices'
+import LoadingScreen from '../Components/LoadingScreen'
 
 export default function FeedPage() {
     const [posts, setPosts] = useState([])
@@ -19,7 +20,9 @@ export default function FeedPage() {
         <>
             <div className="posts mt-25">
                 <PostCard />
-                {/* {posts.map((post) => <PostCard post={post} key={post.id} />)} */}
+                <LoadingScreen />
+
+                {/* {posts.length == 0? <LoadingScreen />: posts.map((post) => <PostCard post={post} key={post.id} />)} */}
             </div>
         </>
     )
