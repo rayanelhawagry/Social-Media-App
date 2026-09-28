@@ -1,4 +1,5 @@
 import React from 'react'
+import userPP from '../assets/userPP.png'
 
 export default function PostCard() {
     return (
@@ -6,7 +7,7 @@ export default function PostCard() {
             <div className="bg-white w-[80%] rounded-md shadow-md h-auto py-3 px-3 my-5 mx-auto">
                 <div className="w-full h-16 items-center flex justify-between ">
                     <div className="flex">
-                        <img className=" rounded-full w-10 h-10 mr-3" alt='' />
+                        <img className=" rounded-full w-10 h-10 mr-3" src={userPP} alt='User profile picture' />
                         <div>
                             <h3 className="text-md font-semibold ">Rayan Elhawagry</h3>
                             <p className="text-xs text-gray-500">45 mnt</p>
@@ -15,7 +16,7 @@ export default function PostCard() {
                     <svg className="w-16" xmlns="http://www.w3.org/2000/svg" width={27} height={27} viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" strokeWidth={2} strokeLinecap="square" strokeLinejoin="round"><circle cx={12} cy={12} r={1} /><circle cx={19} cy={12} r={1} /><circle cx={5} cy={12} r={1} /></svg>
                 </div>
                 <p>Bla Bla Bla Bla</p>
-                <p>I'm just trying to build simple social media app to enhance my react js skills</p>
+                <p>I'm just trying to build a simple social media app to enhance my react js skills</p>
                 <div className="w-full h-8 flex items-center px-3 my-3">
                     <div className="bg-blue-500 z-10 w-5 h-5 rounded-full flex items-center justify-center ">
                         <svg className="w-3 h-3 fill-current text-white" xmlns="http://www.w3.org/2000/svg" width={27} height={27} viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" strokeWidth={2} strokeLinecap="square" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg>
