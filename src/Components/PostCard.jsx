@@ -1,5 +1,6 @@
 import React from 'react'
 import userPP from '../assets/userPP.png'
+import { Link } from 'react-router-dom'
 
 export default function PostCard() {
     return (
@@ -26,7 +27,7 @@ export default function PostCard() {
                     </div>
                     <div className="w-full flex justify-between">
                         <p className="ml-3 text-gray-500">8</p>
-                        <p className="ml-3 text-gray-500">29 comment</p>
+                        <p className="ml-3 text-gray-500"><Link to={'post-details'}>29 Comment</Link></p>
                     </div>
                 </div>
                 <div className="grid grid-cols-3 w-full px-5 my-3 border-t border-divider pt-4">
