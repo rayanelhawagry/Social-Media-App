@@ -13,3 +13,17 @@ export async function getAllPostsAPI() {
         return error
     }
 }
+
+
+export async function getSinglePostAPI(postId) {
+    try {
+        const { data } = await axios.get(`https://linked-posts.routemisr.com/posts/${postId}`, {
+            headers: {
+                token: localStorage.getItem('token')
+            }
+        })
+        return data
+    } catch (error) {
+        return error
+    }
+}
