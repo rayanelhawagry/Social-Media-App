@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import userPP from '../assets/userPP.png'
 import { Link } from 'react-router-dom'
+import { Button, Input } from '@heroui/react'
 
 export default function PostCard() {
+    const [commentContent, setCommentContent] = useState('')
+
+
     return (
         <>
             <div className="bg-white w-[80%] rounded-md shadow-md h-auto py-3 px-3 my-5 mx-auto">
@@ -18,6 +22,10 @@ export default function PostCard() {
                 </div>
                 <p>Bla Bla Bla Bla</p>
                 <p>I'm just trying to build a simple social media app to enhance my react js skills</p>
+                <form className='flex justify-between gap-2 my-2'>
+                    <Input className='border border-blue-200 w-[75%]' variant='bordered' placeholder='Comment ...' />
+                    <Button className='w-[25%]' isDisabled={commentContent < 2}>Add Comment</Button>
+                </form>
                 <div className="w-full h-8 flex items-center px-3 my-3">
                     <div className="bg-blue-500 z-10 w-5 h-5 rounded-full flex items-center justify-center ">
                         <svg className="w-3 h-3 fill-current text-white" xmlns="http://www.w3.org/2000/svg" width={27} height={27} viewBox="0 0 24 24" fill="none" stroke="#b0b0b0" strokeWidth={2} strokeLinecap="square" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" /></svg>
