@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Button, Input } from '@heroui/react'
 
 export default function PostCard() {
-    const [commentContent, setCommentContent] = useState('')
+    const [commentContent, setCommentContent] = useState('test')
 
 
     return (
@@ -23,7 +23,7 @@ export default function PostCard() {
                 <p>Bla Bla Bla Bla</p>
                 <p>I'm just trying to build a simple social media app to enhance my react js skills</p>
                 <form className='flex justify-between gap-2 my-2'>
-                    <Input className='border border-blue-200 w-[75%]' variant='bordered' placeholder='Comment ...' />
+                    <Input className='border border-blue-200 w-[75%]' variant='bordered' value={commentContent} onChange={(e) => setCommentContent(e.target.value)} placeholder='Comment ...' />
                     <Button className='w-[25%]' isDisabled={commentContent < 2}>Add Comment</Button>
                 </form>
                 <div className="w-full h-8 flex items-center px-3 my-3">
