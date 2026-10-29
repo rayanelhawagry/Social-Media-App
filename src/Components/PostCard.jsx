@@ -11,9 +11,11 @@ export default function PostCard() {
     async function createComment(e) {
         e.preventDefault()
         setLoading(true)
-        const response = await createCommentAPI(commentContent, post.id)
-        if (response.message)
+        // const response = await createCommentAPI(commentContent, post.id)
+        // if (response.message)
             // await useCallback()
+        console.log(commentContent)
+        setCommentContent('')
         setLoading(false)
     }
 
