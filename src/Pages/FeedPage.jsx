@@ -22,7 +22,7 @@ export default function FeedPage() {
                 <PostCard />
                 <LoadingScreen />
 
-                {/* {posts.length == 0? <LoadingScreen />: posts.map((post) => <PostCard post={post} commentLimit={1} key={post.id} />)} */}
+                {/* {posts.length == 0 ? <LoadingScreen /> : posts.map((post) => <PostCard post={post} commentLimit={1} key={post.id} callBack={getAllPosts} />)} */}
             </div>
         </>
     )

@@ -2,10 +2,20 @@ import React, { useState } from 'react'
 import userPP from '../assets/userPP.png'
 import { Link } from 'react-router-dom'
 import { Button, Input } from '@heroui/react'
+import { createCommentAPI } from '../Services/CommentServices'
 
 export default function PostCard() {
-    const [commentContent, setCommentContent] = useState('test')
+    const [commentContent, setCommentContent] = useState('')
+    const [loading, setLoading] = useState(false)
 
+    async function createComment(e) {
+        e.preventDefault()
+        setLoading(true)
+        const response = await createCommentAPI(commentContent, post.id)
+        if (response.message)
+            // await useCallback()
+        setLoading(false)
+    }
 
     return (
         <>
@@ -22,9 +32,9 @@ export default function PostCard() {
                 </div>
                 <p>Bla Bla Bla Bla</p>
                 <p>I'm just trying to build a simple social media app to enhance my react js skills</p>
-                <form className='flex justify-between gap-2 my-2'>
+                <form className='flex justify-between gap-2 my-2' onSubmit={createComment}>
                     <Input className='border border-blue-200 w-[75%]' variant='bordered' value={commentContent} onChange={(e) => setCommentContent(e.target.value)} placeholder='Comment ...' />
-                    <Button className='w-[25%]' isDisabled={commentContent < 2}>Add Comment</Button>
+                    <Button className='w-[25%]' type='submit' isDisabled={commentContent < 2}>Add Comment</Button>
                 </form>
                 <div className="w-full h-8 flex items-center px-3 my-3">
                     <div className="bg-blue-500 z-10 w-5 h-5 rounded-full flex items-center justify-center ">

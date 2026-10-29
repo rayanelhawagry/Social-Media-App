@@ -26,7 +26,7 @@ export default function PostDetails() {
             <div className="w-4/6 mx-auto">
                 <PostCard />
 
-                {/* {post ? <PostCard post={post} commentLimit={post.comments.length} /> : <LoadingScreen />} */}
+                {/* {post ? <PostCard post={post} commentLimit={post.comments.length} callBack={getAllPosts} /> : <LoadingScreen />} */}
             </div>
         </>
     )
